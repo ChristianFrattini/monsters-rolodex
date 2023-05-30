@@ -30,7 +30,14 @@ class App extends Component {
       <p>Hello {this.state.name.firstName} {this.state.name.lastName}, 
       I work at {this.state.company}</p>  
       <button 
-      onClick={()=>{this.setState({name:{firstName: 'Luke', lastName:'Skybulker'}})}}>
+      onClick={()=>{
+        this.setState(()=>{
+          return{
+            name:{firstName:'Harry', lastName:'Spotter'} //returns the name variable.
+          };
+        }, ()=>{console.log(this.state)} // the callback function is run only after the state change happened
+        );  
+      }}>
          Change Name
          </button>
       <p className="read-the-docs">
