@@ -6,6 +6,14 @@ import './App.css'
 
 
 class App extends Component {
+  constructor(){  //run BEFORE the return of render
+     super(); 
+
+     this.state={   //used for referencing the state of the variable 'name' and access it in the js
+      name:{firstName:'Chris', lastName: 'Frattini'},
+      company: 'Frattini LTD'
+     }
+  }
 
   render(){
   return (
@@ -19,8 +27,12 @@ class App extends Component {
         </a>
       </div>
       <h1>Vite - React</h1>
-      <p>Hello Chris</p>
-      <button> Change Name</button>
+      <p>Hello {this.state.name.firstName} {this.state.name.lastName}, 
+      I work at {this.state.company}</p>  
+      <button 
+      onClick={()=>{this.setState({name:{firstName: 'Luke', lastName:'Skybulker'}})}}>
+         Change Name
+         </button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
