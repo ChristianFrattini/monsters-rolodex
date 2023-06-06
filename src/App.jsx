@@ -11,27 +11,21 @@ class App extends Component {
      
      
     this.state={ //array declaration
-      monsters:[
-        {
-          name:'linda',
-          id:'dsjhbfjksd'
-        },
-        {
-          name: 'frank',
-          id:'kafjdf'
-        },
-        {
-          name: 'jackie',
-          id:'fahhfaei'
-        },
-        {
-          name:'harry spotter',
-          id:'kdabkvcb'
-        }
-      ]
-    }
+      monsters:[]  //initialiase as empty in order to take values from API
+      }
+    };
     
-  }
+    componentDidMount(){    //method that is run only once and used to fetch data fro API
+      fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response)=>response.json())  //converts the content of the api into a json file
+      .then((users)=>this.setState(()=>{
+        return{monsters: users}} ,
+        ()=>{console.log(this.state);}
+      ));   //monters is set to be equal to users (variable)
+    }
+
+
+  
   render(){
   return (
     <div>
