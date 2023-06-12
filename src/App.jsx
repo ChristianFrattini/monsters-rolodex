@@ -28,25 +28,32 @@ class App extends Component {
       ));   //monsters is set to be equal to users (variable)
     }
 
+    onSearchChange = (event)=>{ //external method
+      const searchField=event.target.value.toLocaleLowerCase(); //a constant is storing the name. lower cased
+      this.setState(()=>{
+        return {searchField}; //return the filtered name into the variable search field
+      });
+    }
 
   
   render(){
   console.log('render-runs second')
 
-  const filteredMonsters=this.state.monsters.filter((monster)=>{
-    return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+  const {monsters, searchField}= this.state; //allows to make the code more readeable by coder
+  const {onSearchChange}=this; //allows to make the code more readeable by coder
+
+  const filteredMonsters=monsters.filter((monster)=>{
+    return monster.name.toLocaleLowerCase().includes(searchField);
   }); // constant containing the filtered mosters. (they're gonna be saved into the monster array
+
 
   return (
     <div>
 
       <input className='search-box' type='search' placeholder='Search Monster'
-      onChange={(event)=>{
-        const searchField=event.target.value.toLocaleLowerCase(); //a constant is storing the name. lower cased
-        this.setState(()=>{
-          return {searchField}; //return the filtered name into the variable search field
-        });
-      }}></input>
+      onChange={onSearchChange //by initializing an external method the performance is better
+      //because the method doesnt need to be re initialised every time there's a change in the input 
+      }></input> 
 
 
       {filteredMonsters.map((monster)=>{ //the map method allows to access the array. 
