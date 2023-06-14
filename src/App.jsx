@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Component } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+
+import CardList from './components/card-list/card-list.component.jsx'
 import './App.css'
+
 
 
 class App extends Component {
@@ -15,11 +18,11 @@ class App extends Component {
       searchField:'',  //intialise a search field variable (it is made accessible everywhere in the code)
       }
 
-      console.log('constructor-runs first')
+      //console.log('constructor-runs first')
     };
     
     componentDidMount(){    //method that is run only once and used to fetch data fro API
-      console.log('componentDidMount-runs third')
+      //console.log('componentDidMount-runs third')
       fetch('https://jsonplaceholder.typicode.com/users') // fetches the content of an api
       .then((response)=>response.json())  //converts the content of the api into a json file
       .then((users)=>this.setState(()=>{
@@ -37,7 +40,7 @@ class App extends Component {
 
   
   render(){
-  console.log('render-runs second')
+  //console.log('render-runs second')
 
   const {monsters, searchField}= this.state; //allows to make the code more readeable by coder
   const {onSearchChange}=this; //allows to make the code more readeable by coder
@@ -56,12 +59,13 @@ class App extends Component {
       }></input> 
 
 
-      {filteredMonsters.map((monster)=>{ //the map method allows to access the array. 
+      {/*filteredMonsters.map((monster)=>{ //the map method allows to access the array. 
       //create a temporary object (monster) and use it iterate through the array and generate an h1 on the wp
         return <div key={monster.id}><h1>{monster.name}</h1></div> //a key value is needed for efficiency of the page
                                                         //react will only update the needed component instead of the entire page
       })
-      }
+      */}
+      <CardList monsters={filteredMonsters}/>
     </div>
   );
   }
