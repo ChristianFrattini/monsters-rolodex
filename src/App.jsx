@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import CardList from './components/card-list/card-list.component.jsx'
+import SearchBox from './components/search-box/search-box.component'
 import './App.css'
 
 
@@ -53,10 +54,7 @@ class App extends Component {
   return (
     <div>
 
-      <input className='search-box' type='search' placeholder='Search Monster'
-      onChange={onSearchChange //by initializing an external method the performance is better
-      //because the method doesnt need to be re initialised every time there's a change in the input 
-      }></input> 
+      <SearchBox onChangeHandler={onSearchChange} placeholder='Search Monsters' className='search-box' />
 
 
       {/*filteredMonsters.map((monster)=>{ //the map method allows to access the array. 
