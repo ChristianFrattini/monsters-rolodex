@@ -54,7 +54,8 @@ class App extends Component {
   return (
     <div>
 
-      <SearchBox onChangeHandler={onSearchChange} placeholder='Search Monsters' className='search-box' />
+      <SearchBox onChangeHandler={onSearchChange} placeholder='Search Monsters'
+       className='monsters-search-box' />
 
 
       {/*filteredMonsters.map((monster)=>{ //the map method allows to access the array. 
